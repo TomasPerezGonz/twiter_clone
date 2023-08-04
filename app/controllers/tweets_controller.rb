@@ -27,14 +27,10 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
 
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to tweet_url(@tweet), notice: "Tweet was successfully created." }
-        format.json { render :show, status: :created, location: @tweet }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
+    if @tweet.save
+      redirect_to @tweet, notice: 'Your tweet was successfully created'
+    else
+      render :new
     end
   end
 
@@ -71,4 +67,4 @@ class TweetsController < ApplicationController
     def tweet_params
       params.require(:tweet).permit(:description, :user_name)
     end
-end
+  end

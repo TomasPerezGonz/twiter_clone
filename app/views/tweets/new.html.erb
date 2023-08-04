@@ -1,9 +1,19 @@
 <h1>New tweet</h1>
 
-<%= render "form", tweet: @tweet %>
+<%= form_with(model: @tweet, local: true) do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :user_name %>
+    <%= form.text_field :user_name %>
+  </div>
 
-<div>
-  <%= link_to "Back to tweets", tweets_path %>
-</div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', tweets_path %>
