@@ -1,19 +1,22 @@
-<h1>New tweet</h1>
+<div class="container mt-4">
+  <h1>New tweet</h1>
 
-<%= form_with(model: @tweet, local: true) do |form| %>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <%= form_with(model: @tweet, local: true, class: 'needs-validation') do |form| %>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control', placeholder: 'What\'s happening?' %>
+    </div>
 
-  <div>
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :user_name %>
+      <%= form.text_field :user_name, class: 'form-control', placeholder: 'Your username' %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit class: 'btn btn-primary mt-3' %>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', tweets_path %>
+  <%= link_to 'Back', tweets_path, class: 'btn btn-secondary mt-3' %>
+</div>
+

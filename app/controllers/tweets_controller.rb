@@ -8,6 +8,9 @@ class TweetsController < ApplicationController
     else
       Tweet.order(created_at: :desc)
     end
+
+    @pagy, @tweets = pagy(Tweet.order(created_at: :desc), items: 10)
+
   end
 
   # GET /tweets/1 or /tweets/1.json
