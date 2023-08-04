@@ -1,5 +1,4 @@
 class Tweet < ApplicationRecord
-    include PgSearch::module 
-        pg_search_scope :serch_tweet, against: [description, :user_name]        
-    end
+    include PgSearch::Model 
+        pg_search_scope :search_tweet, against: [:description, :user_name]        
 end
